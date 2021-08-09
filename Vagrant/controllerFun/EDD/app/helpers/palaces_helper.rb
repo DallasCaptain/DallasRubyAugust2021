@@ -1,0 +1,2 @@
+module PalacesHelper
+end

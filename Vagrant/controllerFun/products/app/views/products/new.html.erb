@@ -1,0 +1,7 @@
+<h1>new works</h1>
+<form action='/products/' method='post'>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type='text' name='product[name]' placeholder='name' />
+  <input type='number' name='product[price]' placeholder='price' />
+  <input type='submit' value='Create' />
+</form>

@@ -1,0 +1,6 @@
+<table>
+    <tr><th>ID</th><th>Model</th><th>Price</th></tr>
+    <% @palaces.each do |palace| %>
+        <tr><td><%= palace.id %></td><td><%= palace.model %></td><td>$<%= palace.price %></td></tr>
+    <% end %>
+</table>

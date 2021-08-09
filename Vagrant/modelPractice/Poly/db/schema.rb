@@ -11,36 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210805155123) do
+ActiveRecord::Schema.define(version: 20210805161314) do
 
-  create_table "buyers", force: :cascade do |t|
+  create_table "birds", force: :cascade do |t|
+    t.string   "species"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "people", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.integer  "record_id"
-    t.integer  "buyer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "pictures", force: :cascade do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
-  add_index "follows", ["buyer_id"], name: "index_follows_on_buyer_id"
-  add_index "follows", ["record_id"], name: "index_follows_on_record_id"
+  add_index "pictures", ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
 
-  create_table "record_buyers", force: :cascade do |t|
-    t.integer  "record_id"
-    t.integer  "buyer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "record_buyers", ["buyer_id"], name: "index_record_buyers_on_buyer_id"
-  add_index "record_buyers", ["record_id"], name: "index_record_buyers_on_record_id"
-
-  create_table "records", force: :cascade do |t|
-    t.string   "name"
+  create_table "places", force: :cascade do |t|
+    t.string   "city"
+    t.string   "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
