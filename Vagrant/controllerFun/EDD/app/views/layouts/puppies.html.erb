@@ -7,8 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1>Welcome to Puppy Palace Unlimited</h1>
+<h1>Welcome to Puppy Palace</h1>
+<%= yield :top %>
+<%= render 'form' %>
+<hr>
 <%= yield %>
-
+<hr>
+<%= yield :bottom %>
 </body>
 </html>

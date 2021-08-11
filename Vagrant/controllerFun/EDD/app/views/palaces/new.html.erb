@@ -2,3 +2,12 @@
 
     <input type="submit" value='create'>
 </form>
+
+<hr>
+
+<%= form_for :palace, :url => {:action => 'create' } do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :model %>
+    <%= f.number_field :price %>
+    <%= submit_tag 'add palace' %>
+<% end %>
