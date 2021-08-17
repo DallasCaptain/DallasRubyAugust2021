@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   get 'sessions/new' => 'sessions#new'
   post 'sessions/' => 'sessions#create'
-  delete 'sessions/:id' => 'sessions#destroy'
+  get 'sessions/:id' => 'sessions#destroy'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
