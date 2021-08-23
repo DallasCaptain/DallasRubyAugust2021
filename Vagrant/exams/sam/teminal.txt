@@ -1,0 +1,57 @@
+2.3.1 :002 > User.new
++----+------+-------+-------+-----------------+------------+------------+
+| id | name | alias | email | password_digest | created_at | updated_at |
++----+------+-------+-------+-----------------+------------+------------+
+|    |      |       |       |                 |            |            |
++----+------+-------+-------+-----------------+------------+------------+
+1 row in set
+2.3.1 :003 > Idea.new
++----+---------+---------+------------+------------+
+| id | content | user_id | created_at | updated_at |
++----+---------+---------+------------+------------+
+|    |         |         |            |            |
++----+---------+---------+------------+------------+
+1 row in set
+2.3.1 :004 > Like.new
++----+---------+---------+------------+------------+
+| id | user_id | idea_id | created_at | updated_at |
++----+---------+---------+------------+------------+
+|    |         |         |            |            |
++----+---------+---------+------------+------------+
+1 row in set
+
+vagrant@vagrant-ubuntu-trusty-64:/vagrant/exam$ rake routes
+        Prefix Verb   URI Pattern                              Controller#Action
+          root GET    /                                        welcome#index
+      sessions GET    /sessions(.:format)                      sessions#index
+               POST   /sessions(.:format)                      sessions#create
+   new_session GET    /sessions/new(.:format)                  sessions#new
+  edit_session GET    /sessions/:id/edit(.:format)             sessions#edit
+       session GET    /sessions/:id(.:format)                  sessions#show
+               PATCH  /sessions/:id(.:format)                  sessions#update
+               PUT    /sessions/:id(.:format)                  sessions#update
+               DELETE /sessions/:id(.:format)                  sessions#destroy
+         users GET    /users(.:format)                         users#index
+               POST   /users(.:format)                         users#create
+      new_user GET    /users/new(.:format)                     users#new
+     edit_user GET    /users/:id/edit(.:format)                users#edit
+          user GET    /users/:id(.:format)                     users#show
+               PATCH  /users/:id(.:format)                     users#update
+               PUT    /users/:id(.:format)                     users#update
+               DELETE /users/:id(.:format)                     users#destroy
+    idea_likes GET    /ideas/:idea_id/likes(.:format)          likes#index
+               POST   /ideas/:idea_id/likes(.:format)          likes#create
+ new_idea_like GET    /ideas/:idea_id/likes/new(.:format)      likes#new
+edit_idea_like GET    /ideas/:idea_id/likes/:id/edit(.:format) likes#edit
+     idea_like GET    /ideas/:idea_id/likes/:id(.:format)      likes#show
+               PATCH  /ideas/:idea_id/likes/:id(.:format)      likes#update
+               PUT    /ideas/:idea_id/likes/:id(.:format)      likes#update
+               DELETE /ideas/:idea_id/likes/:id(.:format)      likes#destroy
+         ideas GET    /ideas(.:format)                         ideas#index
+               POST   /ideas(.:format)                         ideas#create
+      new_idea GET    /ideas/new(.:format)                     ideas#new
+     edit_idea GET    /ideas/:id/edit(.:format)                ideas#edit
+          idea GET    /ideas/:id(.:format)                     ideas#show
+               PATCH  /ideas/:id(.:format)                     ideas#update
+               PUT    /ideas/:id(.:format)                     ideas#update
+               DELETE /ideas/:id(.:format)                     ideas#destroy

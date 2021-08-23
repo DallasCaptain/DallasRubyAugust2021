@@ -1,0 +1,19 @@
+<a href="/ideas">ALL ideas</a>
+<h1>Bright Idea #<%= @idea.id %></h1>
+
+<p><a href="/users/<%= @idea.user_id %>"><%= @idea.user.alias %></a> thinks: <b style="border:1px solid #ccc"><%= @idea.content %></b></p>
+
+<h3>Users that like this post:</h3>
+<table style="border:2px solid rgb(0, 0, 0)">
+    <tr>
+        <th style="border:2px solid #ccc">Alias</th>
+        <th style="border:2px solid #ccc">Name</th>
+    </tr>
+    <% @likes.each do |like|%>
+    <tr>
+        <td style="border:1px solid #ccc"><a href="/users/<%= like.user.id %>"><%= like.user.alias %></a></td>
+        <td style="border:1px solid #ccc"><%= like.user.name %></td>
+    </tr>
+    <% end %>
+</table>
+<p>Find me in app/views/ideas/show.html.erb</p>

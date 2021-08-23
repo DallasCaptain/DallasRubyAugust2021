@@ -1,0 +1,55 @@
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |e| %>
+    <p><%= e %></p>
+  <% end %>
+<% end %>
+
+<h1>Hi <%= @user.name %></h1>
+<a href="/users">Logout</a>
+<br><br>
+<form action="/posts" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="text" id="content" name="post[content]">
+  <input type="submit" value="Post Idea">
+</form>
+<br><br>
+
+
+
+
+<% @posts.all.each do |post| %>
+
+  <h2><a href="/users/<%= @user.id %>"><%= post.user.name %></a></h2>
+  <h3> says:<%= post.content %></h3>
+  <h3>
+    <a href="/posts/<%= post.id %>"><%= post.likes.count %> people</a> like this.
+  </h3>
+    <% if post.user == current_user %>
+      <form action = "/posts/<%= post.id %>" method = "post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete">
+        <input type = 'submit' value = "Delete Post">
+      </form>
+    <% end %>
+    <% unless post.users.include?(current_user) %>
+      <form action="/likes" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="like[post_id]" value = "<%= post.id %>">
+        <button type="submit" id="Like">
+          Like
+        </button>
+      </form>
+    <% else %>
+      <form action = "/likes/<%= Like.where(user: current_user, post: post).first.id%>" method = "post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete"/>
+        <button type="submit" id="Unlike">
+          Unlike
+        </button>
+      </form>
+  <% end %>
+<% end %>

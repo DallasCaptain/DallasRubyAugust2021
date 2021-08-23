@@ -1,0 +1,23 @@
+
+<a href="/users">Logout</a> |
+<a href="/posts">Bright Ideas</a>
+
+<h2><%= @post.user.name %> says: <%= @post.content %></h2>
+
+
+
+<p>People who liked this post:</p>
+<table>
+  <thead>
+  <th>Alias</th>
+  <th>Name</th>
+  </thead>
+  <tbody>
+    <% @post.users_likes.each do |user| %>
+  <tr>
+      <td><%= user.name %></td>
+      <td><%= user.alias %></td>
+  </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,33 @@
+<h1>Welcome to Bright Ideas</h1>
+<% if flash[:notice] %>
+<div class="notice"></div><%= flash[:notice] %></div>
+<% end %>
+<h3>Returning Members Login:</h3>
+<form action="/sessions" style="border:1px solid #ccc" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="email"><b>Email:</b></label>
+    <input type="text" placeholder="Enter Email" name="user[email]" required><br>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="user[password]" required><br>
+    <button type="submit">Login</button>
+</form>
+
+
+<h3>New Users Please Register Below:</h3>
+<form action="/users" style="border:1px solid #ccc" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="name"><b>Name:</b></label>
+    <input type="text" placeholder="Enter Name" name="user[name]" required><br>
+    <label for="alias"><b>Alias:</b></label>
+    <input type="text" placeholder="Enter Alias" name="user[alias]" required><br>
+    <label for="email"><b>Email:</b></label>
+    <input type="text" placeholder="Enter Email" name="user[email]" required><br>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="user[password]" required><br>
+    <label for="password-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="user[password_confirmation]" required><br>
+    <button type="submit">Sign Up</button>
+</form>
+
+
+<p>Find me in app/views/welcome/index.html.erb</p>

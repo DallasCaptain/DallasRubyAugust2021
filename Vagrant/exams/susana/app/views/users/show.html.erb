@@ -1,0 +1,12 @@
+<h1>Users Info</h1>
+<a href="/users">Logout</a> |
+<a href="/posts">Bright Ideas</a>
+<br><br>
+<% @users.each do |user| %>
+<p>Name:<%= user.name %></p>
+<p>Alias:<%= user.alias %></p>
+<p>Email:<%= user.email %></p>
+<% end %>
+<br><br>
+<p>Total number of posts: <%= current_user.posts.count %></p>
+<p>Total number of likes: <%= current_user.likes.count %></p>

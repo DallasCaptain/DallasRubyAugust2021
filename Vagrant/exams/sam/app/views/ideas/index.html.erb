@@ -1,0 +1,29 @@
+<h1>Welcome <%= current_user.alias %></h1>
+<a href="/users/<%= current_user.id %>">Your Page</a>
+
+<h2>What's your next BIG idea?</h2>
+<form action="/ideas" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="idea[user_id]" value="<%= current_user.id %>">
+    <textarea name="idea[content]" cols="50" rows="2" placeholder="Tell me how you want to change the world"></textarea>
+    <input type="submit" name="Idea!" value="Idea!">
+</form>
+
+
+<h2>The BEST Ideas</h2>
+<% @ideas.each do |idea| %>
+  <div style="border:2px solid rgb(0, 0, 0)">
+  <p><a href="/users/<%= idea.user.id %>"><%= idea.user.alias %></a> says: <b style="border:1px solid #ccc"><%=idea.content%></b></p>
+  <p><a href="/ideas/<%= idea.id %>"><%= idea.likes.count %> users</a> like this idea.</p>
+  <% unless idea.users.include?(current_user) %>
+    <a href="/ideas/<%=idea.id%>/likes" data-method="POST">I LIKE this</a>
+  <% else %>
+    <a href="/ideas/<%=idea.id%>/likes/<%= Like.where(user: current_user, idea: idea).first.id %>" data-method="delete">I don't LIKE this anymore</a>
+  <% end %><br>
+  <% if current_user == idea.user %>
+  <a href="/ideas/<%=idea.id%>" data-method="delete">Delete This idea</a>
+  <% end %>
+  </div><br>
+<% end %>
+
+<p>Find me in app/views/ideas/index.html.erb</p>
